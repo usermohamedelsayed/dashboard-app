@@ -6,21 +6,21 @@ import { FaMoon, FaSearch, FaSun, FaUser } from "react-icons/fa";
 import { IoNotifications, IoSettings } from "react-icons/io5";
 import { IoMdClose } from 'react-icons/io';
 const Header = () => {
-    const [theme, setTheme] = useState(false)
+    const [darkMood, setDarkMood] = useState(false)
     const [toggleSearchMopile, setToggleSearchMopile] = useState(false)
-    const handelrThemeFunc = () => {
-        setTheme(!theme)
-        if (!theme) {
+    const handelrdarkMoodFunc = () => {
+        setDarkMood(!darkMood)
+        if (!darkMood) {
             document.body.classList.remove("light")
-            localStorage.setItem("theme", "dark")
+            localStorage.setItem("darkMood", "dark")
         } else {
             document.body.classList.add("light")
-            localStorage.setItem("theme", "light")
+            localStorage.setItem("darkMood", "light")
         }
     }
     useEffect(() => {
-        document.body.classList.add(localStorage.theme || "light")
-        setTheme(localStorage.theme === "dark" ? true : false)
+        document.body.classList.add(localStorage.darkMood || "dark")
+        setDarkMood(localStorage.darkMood === "light" ? false : true)
     }, [])
     return (
         <div className='Header'>
@@ -36,9 +36,9 @@ const Header = () => {
             </div>
             <ul className="box_icons">
                 <li className='btnSearchMopile' onClick={() => setToggleSearchMopile(true)}><FaSearch /></li>
-                <li onClick={handelrThemeFunc}>
+                <li onClick={handelrdarkMoodFunc}>
                     {
-                        theme ? (
+                        darkMood ? (
                             <FaMoon />
                         ) : <FaSun />
                     }

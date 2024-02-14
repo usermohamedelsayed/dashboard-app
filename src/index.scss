@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Overpass:ital,wght@0,200;0,400;0,500;0,600;1,900&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');
+
+:root {
+  --bg-main: #222;
+  --bg-submain: #333;
+  --bg-backDrob: #0505058e;
+  --bg-backDrob-soft: #05050581;
+  --bg-input-focus: #5de2622c;
+  --cr-main: #4CAF50;
+  --cr-main-hover: #5de261;
+  --cr-submain: #4caf4f3b;
+  --cr-hover: #494949;
+  --cr-text: #fff;
+  --cr-shadow: #3a3a3a;
+  --cr-border: #5d5d5d;
+  --cr-text-muted: #cfcfcf;
+  --placeholder-input: #acacac;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--bg-submain);
+}
+
+::-webkit-scrollbar-thumb {
+  transition: .3s ease background-color;
+  box-shadow: inset 0 0 10px var(--cr-main);
+}
+
+::placeholder {
+  color: var(--placeholder-input);
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Overpass', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--cr-text);
+
+  &.light {
+    --bg-main: #dfdfdf;
+    --bg-submain: #fff9ef;
+    --cr-main: #673AB7;
+    --cr-submain: #683ab72a;
+    --cr-main-hover: #683ab7ab;
+    --cr-text: #444444;
+    --cr-border: #bfbfbf;
+    --cr-text-muted: #5b5b5bd0;
+    --cr-shadow: #50505038;
+    --cr-hover: rgb(173, 173, 173);
+    --bg-input-focus: #683ab734;
+    --placeholder-input: #797979;
+  }
+}
+
+input,
+textarea {
+  &::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Overpass', sans-serif;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  color: var(--cr-text);
+  font-family: 'Open Sans',
+  sans-serif;
+  font-family: 'Overpass',
+  sans-serif;
+  font-family: 'Poppins',
+  sans-serif;
+  text-transform: none;
+}
+
+a {
+  color: var(--color-text);
+
+  &:visited {
+    color: var(--color-text);
+  }
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.mainContent {
+  background-color: var(--bg-submain);
+  min-height: calc(100vh - 60px);
+  margin: 60px 0 0 70px;
+  padding: 10px;
+}
+
+.titleBoxChart {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.selectResultSearch {
+  background-color: var(--cr-submain);
+  border: 1px solid var(--cr-main);
+  padding: 0;
+  margin: 0 -2px;
+  text-transform: lowercase;
+  color: var(--cr-text);
+}
+
+.btnShadow {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  color: #fff;
+  box-shadow: inset 0 0 30px #222;
+  border-radius: 3px;
+  transition: .3s ease;
+  background-color: var(--cr-main);
+  border: 1px solid var(--cr-main);
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.toggleInput {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 40px;
+  height: 20px;
+  background-color: var(--cr-hover);
+  border-radius: 10px;
+  border: 1px solid var(--cr-border);
+  position: relative;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: var(--bg-submain);
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    border: 1px solid var(--cr-main);
+    transition: .3s ease;
+  }
+
+  &:checked {
+    background-color: var(--cr-main);
+    border: 1px solid var(--cr-main);
+
+    &::after {
+      left: calc(100% - 16px);
+      background-color: white;
+    }
+  }
+}

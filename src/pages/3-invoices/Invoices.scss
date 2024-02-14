@@ -1,0 +1,414 @@
+.Invoices {
+    .settingTable {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        user-select: none;
+
+        .listSetting {
+            padding: 10px;
+            background-color: var(--bg-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px solid var(--cr-border);
+            border-bottom: 0;
+            margin-bottom: -1px;
+            position: relative;
+            z-index: 90;
+
+            @media screen and (max-width: 767px) {
+                width: 100%;
+            }
+
+            .itemSetting {
+                background-color: var(--bg-submain);
+                padding: 5px 14px;
+                border: 1px solid var(--cr-border);
+                cursor: pointer;
+                font-size: 14px;
+                transition: .2s ease;
+                border-radius: 3px;
+
+                &:hover {
+                    background-color: var(--cr-hover);
+                }
+
+
+                &.active {
+                    background-color: var(--cr-main);
+                    border: 1px solid var(--cr-main);
+                    color: #fff;
+                }
+            }
+        }
+
+        .boxSetting {
+            position: absolute;
+            z-index: 90;
+            background-color: var(--bg-main);
+            top: 50px;
+            border: 1px solid var(--cr-border);
+            border-top: 0;
+            padding: 10px;
+            transition: .3s ease;
+            overflow: hidden;
+            max-width: 0px;
+            width: 100%;
+            opacity: 0;
+            pointer-events: none;
+
+            &.active {
+                opacity: 1;
+                max-width: 400px;
+                pointer-events: all;
+
+                @media screen and (max-width: 767px) {
+                    max-width: 100%;
+                }
+            }
+        }
+
+        .boxToggleCols {
+            .btnsToggleCols {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+
+                .toggleCol {
+                    position: relative;
+                    height: 40px;
+                    border-radius: 4px;
+                    padding: 5px 10px;
+                    background-color: var(--bg-submain);
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    overflow: hidden;
+                    user-select: none;
+
+                    input {
+                        -moz-appearance: none;
+                        -webkit-appearance: none;
+                        width: 40px;
+                        height: 20px;
+                        background-color: var(--cr-hover);
+                        border-radius: 10px;
+                        border: 1px solid var(--cr-border);
+                        position: relative;
+                        cursor: pointer;
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            width: 12px;
+                            height: 12px;
+                            background-color: var(--bg-submain);
+                            border-radius: 50%;
+                            top: 2px;
+                            left: 2px;
+                            border: 1px solid var(--cr-main);
+                            transition: .3s ease;
+                        }
+
+                        &:checked {
+                            background-color: var(--cr-main);
+
+                            &::after {
+                                left: calc(100% - 16px);
+                                background-color: white;
+                            }
+                        }
+                    }
+
+                    label {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        inset: 0;
+                        display: flex;
+                        align-items: center;
+                        padding-left: 60px;
+                        font-size: 13px;
+                        color: var(--cr-text);
+                        cursor: pointer;
+
+                    }
+                }
+            }
+
+            .btnsControle {
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+                height: 35px;
+                margin-top: 10px;
+
+                button {
+                    &:nth-child(2) {
+                        border: 1px solid cornflowerblue;
+                        background-color: cornflowerblue;
+                    }
+
+                    &:nth-child(3) {
+                        border: 1px solid crimson;
+                        background-color: crimson;
+                    }
+                }
+            }
+        }
+
+        .boxFilterCols {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: flex-start;
+            gap: 3px;
+
+            .title {
+                font-weight: 600;
+                margin-bottom: 10px;
+                padding: 7px;
+                font-size: 14px;
+                height: 40px;
+                text-align: center;
+                cursor: pointer;
+                border-radius: 4px;
+                transition: .3s ease;
+
+                &:hover {
+                    box-shadow: inset 0 0 20px var(--cr-main);
+                }
+            }
+
+            .inputValue,
+            .inputProcess,
+            .inputCol {
+                display: flex;
+                flex-direction: column;
+                background-color: var(--bg-submain);
+                padding: 5px;
+                border-radius: 3px;
+                height: 45px;
+                overflow: hidden;
+                transition: .3s ease;
+
+                span {
+                    display: block;
+                    padding: 7px;
+                    background-color: var(--bg-main);
+                    border-bottom: 1px solid var(--cr-border);
+                    font-size: 13px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: var(--cr-main);
+                        color: white;
+                    }
+
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+                }
+
+                input {
+                    width: 100%;
+                    padding: 10px;
+                    background-color: var(--bg-main);
+                    border: 1px solid var(--cr-border);
+                    border-radius: 2px;
+                    transition: .3s ease;
+
+                    &:focus {
+                        background-color: var(--bg-input-focus);
+                        border-color: var(--cr-main);
+                    }
+                }
+            }
+        }
+
+        .boxDensityRows {
+            display: grid;
+            gap: 15px;
+
+            .rangeBox {
+                padding: 10px;
+                background-color: var(--bg-submain);
+                border-radius: 4px;
+
+                .title {
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+
+                input {
+                    width: 100%;
+                    height: 20px;
+                    border-radius: 20px;
+                    margin-top: 10px;
+                    background-color: var(--bg-main);
+                    border: 1px solid var(--cr-border);
+                    -webkit-appearance: none;
+                    overflow: hidden;
+                    padding: 10px 0;
+
+                    &::-webkit-slider-thumb {
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        background-color: var(--cr-main);
+                        -webkit-appearance: none;
+                        cursor: pointer;
+                        box-shadow: -410px -100px 0 400px var(--cr-main);
+                        position: relative;
+                    }
+                }
+            }
+
+            .toggleCut {
+                background-color: var(--bg-submain);
+                padding: 10px;
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                label {
+                    font-size: 30px;
+                    cursor: pointer;
+                    margin-top: 1px;
+                }
+
+                input {
+                    width: 50px;
+                }
+            }
+
+            .btnShadow {
+                padding: 10px;
+                max-width: 150px;
+                width: 100%;
+            }
+        }
+    }
+
+    .containerTable {
+        background-color: var(--bg-main);
+        border-radius: 4px;
+        border: 1px solid var(--cr-border);
+        height: 68vh;
+        position: relative;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .backDrob {
+            position: fixed;
+            z-index: 80;
+            inset: 0;
+            height: 100%;
+            width: 100%;
+            background-color: var(--bg-backDrob);
+            pointer-events: none;
+            opacity: 0;
+            transition: .3s ease;
+
+            &.active {
+                pointer-events: all;
+                opacity: 1;
+            }
+        }
+
+        table {
+            width: 100%;
+
+            tr {
+                background-color: var(--bg-main);
+                text-align: center;
+
+                td,
+                th {
+                    padding: 6px;
+                    font-size: 13px;
+                    position: relative;
+                    overflow: hidden;
+
+                    i {
+                        position: absolute;
+                        inset: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 20px;
+                        cursor: pointer;
+                    }
+
+                    &:nth-child(1) {
+                        width: 40px;
+                        text-transform: uppercase;
+                    }
+
+                    &:last-child {
+                        width: 40px;
+                    }
+
+                    &.hide {
+                        display: none;
+                    }
+
+                    &.show {
+                        display: auto;
+                    }
+                }
+
+                td {
+                    font-size: 12px;
+                    font-weight: 300;
+                    color: var(--cr-text-muted);
+                }
+            }
+
+            thead {
+                position: sticky;
+                top: 0;
+                background-color: var(--bg-main);
+                z-index: 50;
+
+                tr {
+                    height: 50px;
+
+                    th {
+                        @media screen and (max-width: 767px) {
+                            font-weight: 300;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+                    cursor: pointer;
+                    background-color: var(--bg-submain);
+                    height: 40px;
+
+                    &:hover {
+                        background-color: var(--cr-hover);
+
+                        td {
+                            color: var(--cr-text);
+
+                            i {
+                                background-color: crimson;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
